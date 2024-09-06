@@ -2,10 +2,12 @@
 
 print("Hello World!")
 
-#Strings
+#Strings and variables
 
 name = input("Enter your name: ")
 age = input("Enter your age: ")
 print ("My name is"+ name + "\nand am Aged " + age)
 
-print("Hello" + input("What is your name?"))
+print("Hello " + name)
+
+print (len(name))
