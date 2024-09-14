@@ -8,14 +8,14 @@ CSV_names = input("Enter every persons name separated by a comma: ")
 names = CSV_names.split(",")
 
 print(names)
-names = len(names)
+
 
 # begin=count(names[0])
 print(names)
 # last = len(names[-1])
 
-print(begin,last)
-# payer = random.choice(names)
-payer = random.randint(begin,last)
+
+payer = random.choice(names)
+
 print(payer)
 
