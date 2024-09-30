@@ -1,36 +1,35 @@
 import random
-word_list =["apple","beekeeper","table","car"]
-random_word = random.choice(word_list)
-user_guess = input("Guess a letter: ")
 
-choice_list = []
-for word in word_list:
-    for letter in user_guess:
-        for i in range(len(word)):
-            if letter == word[i]:
-                choice_list.append(word)
+# List of words
+word_list = ["apple", "beekeeper", "table", "car"]
 
-print(choice_list)
-computer_choice = random.choice(choice_list)
-print(computer_choice)
+# Randomly choose a word from the word_list
+computer_choice = random.choice(word_list)
 
-incomplete_word = []
-print(len(computer_choice))
+# Create a list of underscores representing the word to guess
+incomplete_word = ['_' for _ in computer_choice]
 
+# Set number of attempts
+attempts = len(computer_choice) + 3
 
-i = 0
-while i < len(computer_choice):
+# Start the game
+while attempts > 0 and "_" in incomplete_word:
+    print("Word to guess:", ' '.join(incomplete_word))  # Show current progress of the word
+    user_guess = input("Guess a letter: ").lower()  # Get input from user
 
-    if computer_choice[i] == user_guess:
-
-        incomplete_word.append(computer_choice[i])
+    if user_guess in computer_choice:
+        # Replace underscores with the correct letter
+        for index, letter in enumerate(computer_choice):
+            if letter == user_guess:
+                incomplete_word[index] = user_guess
     else:
+        print(f"'{user_guess}' is not in the word.")
 
-        incomplete_word.append("_")
-    print("Hello")
+    attempts -= 1  # Decrease attempts
+    print(f"Remaining attempts: {attempts}\n")
 
-    i+=1
-print(incomplete_word)
-final =''.join(incomplete_word)
-print(final)
-
+# End of game
+if "_" not in incomplete_word:
+    print(f"Congrats! You guessed the word '{computer_choice}'!")
+else:
+    print(f"Game Over! The word was '{computer_choice}'.")
